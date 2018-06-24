@@ -1,0 +1,88 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "",
+        "description": "",
+        "version": ""
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "operationId": "welcome"
+            }
+        },
+        "/new": {
+            "post": {
+                "operationId": "gameNew",
+                "parameters": [
+                    {
+                        "name": "player1",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "default": "human"
+                        }
+                    },
+                    {
+                        "name": "player2",
+                        "in": "query",
+                        "schema": {
+                            "type": "string",
+                            "default": "random"
+                        }
+                    }
+                ]
+            }
+        },
+        "/list": {
+            "get": {
+                "operationId": "gameList"
+            }
+        },
+        "/game/{gameid}": {
+            "get": {
+                "operationId": "gameGetState",
+                "parameters": [
+                    {
+                        "name": "gameid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/game/{gameid}/move": {
+            "post": {
+                "operationId": "gameMakeMove",
+                "parameters": [
+                    {
+                        "name": "gameid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/game/{gameid}/wait": {
+            "get": {
+                "operationId": "gameWaitForAI",
+                "parameters": [
+                    {
+                        "name": "gameid",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        }
+    }
+}
